@@ -9,11 +9,7 @@ xml.boletin do
 			if (n =~ /Reflex (\d+)/) || n.empty?
 				n="Reflexion #{pos}"
 			end
-			
-			f=File.open('./hop.log','a')
-			f.puts(n)
-			f.close
-			
+
 			h=Digest::MD5.hexdigest(n)
 			i=items[h]	
 
