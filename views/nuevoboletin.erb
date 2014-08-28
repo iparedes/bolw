@@ -1,0 +1,40 @@
+<link rel="stylesheet" type="text/css" href="bolw.css" media="all">
+<head>
+<title>Nuevo Bolet&iacute;n</title>
+</head>
+<body>
+
+<%
+		filenames=Dir[settings.DirXML+"*.xml"]
+		h=filenames.sort_by { |x| x[/\d+/].to_i }
+		h.last  =~ /.*boletin(\d+)/
+		id=$1.to_i+1
+		
+		Orig=Date.new(2013,6,3)
+		actual=Orig+((id-1)*7)
+		
+%>
+
+
+<form action="/nuevoboletin" method="post">
+
+	<div id="outer2">
+	<fieldset>
+		<div id="labels">
+			<label>Id: </label><br>
+			<label>D&iacute;a (dd): </label><br>
+			<label>Mes (m): </label><br>		
+			<label>A&ntilde;o (aaaa): </label><br>
+		</div>
+		<div id="fields">
+			<input type="text" name="id" value="<%=id%>"><br>
+			<input type="text" name="dia" value="<%=actual.day%>"><br>
+			<input type="text" name="mes" value="<%=actual.month%>"><br>
+			<input type="text" name="ano" value="<%=actual.year%>"><br>						
+    </fieldset>
+    <input type="submit" name="action" value="OK">
+    </div>
+</form>
+
+
+</body>

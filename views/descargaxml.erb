@@ -1,0 +1,57 @@
+<link rel="stylesheet" type="text/css" href="bolw.css" media="all">
+
+<body>
+
+<%
+	en=Array.new
+	es=Array.new
+	filenames=Dir[settings.DirXML+"*"]
+	filenames.each do |f|
+		if (f =~ /.*\-en/)
+			en.push(f)
+		else
+			es.push(f)
+		end
+	end
+
+%>
+	
+
+<div id="outer3">
+<div id="docs1">
+	<h1>ES</h1>
+	<%
+		es.sort_by! { |x| -(x[/\d+/].to_i) }
+		es.each do |i|
+			i =~ /.*(boletin.*)$/
+			j=$1
+	%>
+	<%=
+	 "<a href=\"download/#{j}\">#{j}</a><br>"
+	 %>
+	 
+	 <%
+	 end
+	 %>
+</div>
+
+<div id="docs2">
+	<h1>EN</h1>
+	<%
+		en.sort_by! { |x| -(x[/\d+/].to_i) }
+		en.each do |i|
+			i =~ /.*(boletin.*)$/
+			j=$1
+	%>
+	<%=
+	 "<a href=\"#{j}\"download>#{j}</a><br>"
+	 %>
+	 
+	 <%
+	 end
+	 %>
+</div>
+
+</div>
+
+</body>

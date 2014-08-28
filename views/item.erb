@@ -1,0 +1,319 @@
+<link rel="stylesheet" type="text/css" href="bolw.css" media="all">
+<head>
+<title><%= settings.boletin %></title>
+<script>
+function addtag(val)
+{
+	a=document.getElementById("tagsid").value;
+	if (a.length>0){
+		a=a+","+val;
+	} else {
+		a=val;
+	}
+	document.getElementById("tagsid").value=a
+}
+</script>
+</head>
+<body>
+
+<%=
+	if !settings.erro.empty?
+		proverr=settings.erro
+		settings.erro=''
+		"<div id=\"erro\">#{proverr}</div>"
+	end
+%>
+
+<div id="outer">
+<form action="/item" method="post">
+
+	<div id="item">
+	<fieldset>
+	<legend>Items</legend>
+	
+		<div id="item1">
+		<fieldset>
+		<legend>ESP</legend>
+			<label>T&iacute;tulo</label><br>
+			<input type="text" name="titulo" value="<%=
+			if settings.currentitem 
+				"#{settings.currentitem.titulo}"
+			end
+			%>"><br>
+			<label>Texto</label><br>
+			<textarea name="texto" rows="15"><%=
+			if settings.currentitem 
+				"#{settings.currentitem.texto}"
+			end
+			%></textarea><br>
+			<label>Enlace</label><br>
+			<input type="text" name="enlace" value="<%=
+			if settings.currentitem 
+				"#{settings.currentitem.enlace}"
+			end
+			%>">
+		
+		</fieldset>
+		</div>
+		
+		<div id="item2">
+		<fieldset>
+		<legend>ENG</legend>
+			<label>Title</label><br>
+			<input type="text" name="title" value="<%=
+			if settings.currentitem 
+				"#{settings.currentitem.title}"
+			end
+			%>"><br>
+			<label>Text</label><br>
+			<textarea name="text" rows="15"><%=
+			if settings.currentitem
+				"#{settings.currentitem.text}"
+			end
+			%></textarea><br>
+			<label>Link</label><br>
+			<input type="text" name="link" value="<%=
+			if settings.currentitem 
+				"#{settings.currentitem.link}"
+			end
+			%>">
+		</fieldset>
+		</div>
+		
+		<%
+			vn="\"noticia\""
+			vd="\"documento\""
+			ve="\"evento\""
+			vr="\"reflexion\""
+			
+			if settings.currentitem
+				ti=settings.currentitem.tipo
+				case ti
+				when "noticia"
+					vn="\"noticia\" selected=\"selected\""
+				when "documento"
+					vd="\"documento\" selected=\"selected\""
+				when "noticia"
+					ve="\"evento\" selected=\"selected\""					
+				when "noticia"
+					vr="\"reflexion\" selected=\"selected\""
+				end				
+			end
+		%>
+		
+		<div id="tools">
+		<select name="tipo">
+			<option value=<%= vn %> >Noticia</option>
+			<option value=<%= vd %> >Documento</option>
+			<option value=<%= ve %> >Evento</option>
+			<option value=<%= vr %> >Reflexi&oacute;n</option>
+		</select>
+		
+		<select name=seltags onchange=addtag(this.value)>
+		<% if !settings.tags.nil?
+			settings.tags.each do |t| %>
+			<option value='<%= t %>'><%= t%></option>
+		<%	end
+		   end	%>
+		</select>
+		
+		<input type="text" id="tagsid" name="tags" value="<%=
+			if settings.currentitem 
+				"#{settings.currentitem.tags}"
+			end
+			%>">
+		
+		<input type="submit" name="action" value="OK">
+		<input type="submit" name="action" value="Terminar">
+		</div>
+	
+	</fieldset>
+	</div>
+	
+	<%
+		#noticias=Array.new
+		#documentos=Array.new
+		#eventos=Array.new
+		#reflexiones=Array.new
+		noticias=[]
+		documentos=[]
+		eventos=[]
+		reflexiones=[]
+		nreflex=1
+		settings.items.each do |j|
+			i=j[1]
+			case (i.tipo)
+			when 'noticia'
+				noticias.push(i.title)
+			when 'evento'
+				eventos.push(i.title)
+			when 'documento'
+				documentos.push(i.title)
+			when 'reflexion'
+				t="Reflexion #{nreflex}"
+				i.title=t
+				reflexiones.push(t)
+				nreflex+=1
+											
+			end
+		end
+		# noticias es la lista real sacada de los items
+		# si aun no he establecido el noticias global, lo hago
+		if settings.noticias.empty?
+			settings.noticias=noticias
+		end
+		# si tienen la misma longitud no me preocupo
+		# si noticias es mas larga que la global, quiere decir que ha habido
+		# nuevo item. Lo añado al final
+		if (noticias.length>settings.noticias.length)
+			item=noticias-settings.noticias
+			settings.noticias.push(item[0])
+		elsif (noticias.length<settings.noticias.length)
+			item=settings.noticias-noticias
+			settings.noticias=settings.noticias-item
+		end
+
+		if settings.documentos.empty?
+			settings.documentos=documentos
+		end
+		if (documentos.length>settings.documentos.length)
+			item=documentos-settings.documentos
+			settings.documentos.push(item[0])
+		elsif (documentos.length<settings.documentos.length)
+			item=settings.documentos-documentos
+			settings.documentos=settings.documentos-item
+		end
+
+		if settings.eventos.empty?
+			settings.eventos=eventos
+		end
+		if (eventos.length>settings.eventos.length)
+			item=eventos-settings.eventos
+			settings.eventos.push(item[0])
+		elsif (eventos.length<settings.eventos.length)
+			item=settings.eventos-eventos
+			settings.eventos=settings.eventos-item
+		end	
+			
+		if settings.reflexiones.empty?
+			settings.reflexiones=reflexiones
+		end
+		if (reflexiones.length>settings.reflexiones.length)
+			item=reflexiones-settings.reflexiones
+			settings.reflexiones.push(item[0])
+		elsif (reflexiones.length<settings.reflexiones.length)
+			item=settings.reflexiones-reflexiones
+			settings.reflexiones=settings.reflexiones-item
+		end
+	%>
+
+    <div id="lists">
+        <fieldset>
+				Noticias
+				<div id="seccion">
+					<div id="texto">
+						<select name="noticias" size="10" style="width: 99%;">
+
+						<% 
+							t=''
+							if settings.notsel.nil?
+								settings.noticias.map{ |n| t=t+"<option>"+n+"</option>\n" }
+							else
+								settings.noticias.map{ |n| settings.noticias[settings.notsel]==n ? t=t+"<option selected>"+n+"</option>\n" : t=t+"<option>"+n+"</option>\n" }
+							end%> 
+						<%= t %>
+						
+				
+						</select>
+					</div>
+					<div id="botones">
+						<button type="submit" name="action" value="notup">&#94;</button><br>
+						<button type="submit" name="action" value="notdown">&#118;</button><br>
+					</div>
+				</div>
+				Documentos
+				<div id="seccion">
+					<div id="texto">
+						<select name="documentos" size="5" style="width: 99%;">
+				
+						<% 
+							t=''
+							if settings.docsel.nil?
+								settings.documentos.map{ |n| t=t+"<option>"+n+"</option>\n" }
+							else
+								settings.documentos.map{ |n| settings.documentos[settings.docsel]==n ? t=t+"<option selected>"+n+"</option>\n" : t=t+"<option>"+n+"</option>\n" }
+							end%> 
+						<%= t %>
+
+						</select>
+					</div>
+					<div id="botones">
+						<button type="submit" name="action" value="docup">&#94;</button><br>
+						<button type="submit" name="action" value="docdown">&#118;</button><br>
+					</div>
+				</div>
+				Eventos				
+				<div id="seccion">
+					<div id="texto">
+						<select name="eventos" size="10" style="width: 99%;">
+				
+						<% 
+							t=''
+							if settings.evesel.nil?
+								settings.eventos.map{ |n| t=t+"<option>"+n+"</option>\n" }
+							else
+								settings.eventos.map{ |n| settings.eventos[settings.evesel]==n ? t=t+"<option selected>"+n+"</option>\n" : t=t+"<option>"+n+"</option>\n" }
+							end%> 
+						<%= t %>				
+						</select><br>
+					</div>
+					<div id="botones">
+						<button type="submit" name="action" value="eveup">&#94;</button><br>
+						<button type="submit" name="action" value="evedown">&#118;</button><br>
+					</div>
+				</div>
+				Reflexiones
+				<div id="seccion">
+					<div id="texto">
+						<select name="reflexiones" size="4" style="width: 99%;">
+
+						<% 
+							t=''
+							if settings.refsel.nil?
+								settings.reflexiones.map{ |n| t=t+"<option>"+n+"</option>\n" }
+							else
+								settings.reflexiones.map{ |n| settings.reflexiones[settings.refsel]==n ? t=t+"<option selected>"+n+"</option>\n" : t=t+"<option>"+n+"</option>\n" }
+							end%> 
+						<%= t %>				
+
+						</select><br>
+					</div>
+					<div id="botones">
+						<button type="submit" name="action" value="refup">&#94;</button><br>
+						<button type="submit" name="action" value="refdown">&#118;</button><br>
+					</div>
+				</div>
+
+				<input type="submit" name="action" value="Carga">	
+				<input type="submit" name="action" value="Borra">	
+				<input type="submit" name="action" value="Copiar Elementos">					
+					
+										
+        </fieldset>
+    </div>
+        
+    
+</form>
+</div>
+
+<%
+
+		#fname="./boletines-trabajo/#{settings.boletin}-en.xml"
+		fname=settings.DirXML+"#{settings.boletin}-en.xml"
+		genXML(fname,'en')
+		#fname="./boletines-trabajo/#{settings.boletin}.xml"
+		fname=settings.DirXML+"#{settings.boletin}.xml"
+		genXML(fname,'es')
+%>
+
+</body>

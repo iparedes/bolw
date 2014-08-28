@@ -1,0 +1,698 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>
+        <%=
+        	if (lan=='es')
+        		"Bolet&iacute;n Semanal de Ciberseguridad Industrial"
+        	else
+        		"Weekly Newsletter of Industrial Cybersecurity"
+        	end
+        %>
+        </title>
+		
+	<style type="text/css">
+		#outlook a{
+			padding:0;
+		}
+		body{
+			width:100% !important;
+		}
+		.ReadMsgBody{
+			width:100%;
+		}
+		.ExternalClass{
+			width:100%;
+		}
+		body{
+			-webkit-text-size-adjust:none;
+		}
+		body{
+			margin:0;
+			padding:0;
+		}
+		img{
+			border:0;
+			height:auto;
+			line-height:100%;
+			outline:none;
+			text-decoration:none;
+		}
+		table td{
+			border-collapse:collapse;
+		}
+		#backgroundTable{
+			height:100% !important;
+			margin:0;
+			padding:0;
+			width:100% !important;
+		}
+	/*
+	@tab Page
+	@section background color
+	@tip Set the background color for your email. You may want to choose one that matches your company's branding.
+	@theme page
+	*/
+		body,#backgroundTable{
+			/*@editable*/background-color:#FAFAFA;
+		}
+	/*
+	@tab Page
+	@section email border
+	@tip Set the border for your email.
+	*/
+		#templateContainer{
+			/*@editable*/border:0;
+		}
+	/*
+	@tab Page
+	@section heading 1
+	@tip Set the styling for all first-level headings in your emails. These should be the largest of your headings.
+	@style heading 1
+	*/
+		h1,.h1{
+			/*@editable*/color:#202020;
+			display:block;
+			/*@editable*/font-family:Arial;
+			/*@editable*/font-size:40px;
+			/*@editable*/font-weight:bold;
+			/*@editable*/line-height:100%;
+			margin-top:2%;
+			margin-right:0;
+			margin-bottom:1%;
+			margin-left:0;
+			/*@editable*/text-align:left;
+		}
+	/*
+	@tab Page
+	@section heading 2
+	@tip Set the styling for all second-level headings in your emails.
+	@style heading 2
+	*/
+		h2,.h2{
+			/*@editable*/color:#404040;
+			display:block;
+			/*@editable*/font-family:Arial;
+			/*@editable*/font-size:18px;
+			/*@editable*/font-weight:bold;
+			/*@editable*/line-height:100%;
+			margin-top:2%;
+			margin-right:0;
+			margin-bottom:1%;
+			margin-left:0;
+			/*@editable*/text-align:left;
+		}
+	/*
+	@tab Page
+	@section heading 3
+	@tip Set the styling for all third-level headings in your emails.
+	@style heading 3
+	*/
+		h3,.h3{
+			/*@editable*/color:#606060;
+			display:block;
+			/*@editable*/font-family:Arial;
+			/*@editable*/font-size:16px;
+			/*@editable*/font-weight:bold;
+			/*@editable*/line-height:100%;
+			margin-top:2%;
+			margin-right:0;
+			margin-bottom:1%;
+			margin-left:0;
+			/*@editable*/text-align:left;
+		}
+	/*
+	@tab Page
+	@section heading 4
+	@tip Set the styling for all fourth-level headings in your emails. These should be the smallest of your headings.
+	@style heading 4
+	*/
+		h4,.h4{
+			/*@editable*/color:#808080;
+			display:block;
+			/*@editable*/font-family:Arial;
+			/*@editable*/font-size:14px;
+			/*@editable*/font-weight:bold;
+			/*@editable*/line-height:100%;
+			margin-top:2%;
+			margin-right:0;
+			margin-bottom:1%;
+			margin-left:0;
+			/*@editable*/text-align:left;
+		}
+	/*
+	@tab Header
+	@section preheader style
+	@tip Set the background color for your email's preheader area.
+	@theme page
+	*/
+		#templatePreheader{
+			/*@editable*/background-color:#FAFAFA;
+		}
+	/*
+	@tab Header
+	@section preheader text
+	@tip Set the styling for your email's preheader text. Choose a size and color that is easy to read.
+	*/
+		.preheaderContent div{
+			/*@editable*/color:#707070;
+			/*@editable*/font-family:Arial;
+			/*@editable*/font-size:10px;
+			/*@editable*/line-height:100%;
+			/*@editable*/text-align:left;
+		}
+	/*
+	@tab Header
+	@section preheader link
+	@tip Set the styling for your email's preheader links. Choose a color that helps them stand out from your text.
+	*/
+		.preheaderContent div a:link,.preheaderContent div a:visited,.preheaderContent div a .yshortcuts{
+			/*@editable*/color:#336699;
+			/*@editable*/font-weight:normal;
+			/*@editable*/text-decoration:underline;
+		}
+	/*
+	@tab Header
+	@section social bar style
+	@tip Set the background color and border for your email's footer social bar.
+	*/
+		#social div{
+			/*@editable*/text-align:right;
+		}
+	/*
+	@tab Header
+	@section header style
+	@tip Set the background color and border for your email's header area.
+	@theme header
+	*/
+		#templateHeader{
+			/*@editable*/background-color:#FFFFFF;
+			/*@editable*/border-bottom:5px solid #505050;
+		}
+	/*
+	@tab Header
+	@section left header text
+	@tip Set the styling for your email's header text. Choose a size and color that is easy to read.
+	*/
+		.leftHeaderContent div{
+			/*@editable*/color:#202020;
+			/*@editable*/font-family:Arial;
+			/*@editable*/font-size:32px;
+			/*@editable*/font-weight:bold;
+			/*@editable*/line-height:100%;
+			/*@editable*/text-align:right;
+			/*@editable*/vertical-align:middle;
+		}
+	/*
+	@tab Header
+	@section right header text
+	@tip Set the styling for your email's header text. Choose a size and color that is easy to read.
+	*/
+		.rightHeaderContent div{
+			/*@editable*/color:#202020;
+			/*@editable*/font-family:Arial;
+			/*@editable*/font-size:32px;
+			/*@editable*/font-weight:bold;
+			/*@editable*/line-height:100%;
+			/*@editable*/text-align:left;
+			/*@editable*/vertical-align:middle;
+		}
+	/*
+	@tab Header
+	@section header link
+	@tip Set the styling for your email's header links. Choose a color that helps them stand out from your text.
+	*/
+		.leftHeaderContent div a:link,.leftHeaderContent div a:visited,.rightHeaderContent div a:link,.rightHeaderContent div a:visited{
+			/*@editable*/color:#336699;
+			/*@editable*/font-weight:normal;
+			/*@editable*/text-decoration:underline;
+		}
+		#headerImage{
+			height:auto;
+			max-width:180px !important;
+		}
+	/*
+	@tab Body
+	@section body style
+	@tip Set the background color for your email's body area.
+	*/
+		#templateContainer,.bodyContent{
+			/*@editable*/background-color:#FDFDFD;
+		}
+	/*
+	@tab Body
+	@section body text
+	@tip Set the styling for your email's main content text. Choose a size and color that is easy to read.
+	@theme main
+	*/
+		.bodyContent div{
+			/*@editable*/color:#505050;
+			/*@editable*/font-family:Arial;
+			/*@editable*/font-size:14px;
+			/*@editable*/line-height:150%;
+			/*@editable*/text-align:left;
+		}
+	/*
+	@tab Body
+	@section body link
+	@tip Set the styling for your email's main content links. Choose a color that helps them stand out from your text.
+	*/
+		.bodyContent div a:link,.bodyContent div a:visited,.bodyContent div a .yshortcuts{
+			/*@editable*/color:#336699;
+			/*@editable*/font-weight:normal;
+			/*@editable*/text-decoration:underline;
+		}
+		.bodyContent img{
+			display:inline;
+			height:auto;
+		}
+	/*
+	@tab Footer
+	@section footer style
+	@tip Set the background color and top border for your email's footer area.
+	@theme footer
+	*/
+		#templateFooter{
+			/*@editable*/background-color:#FAFAFA;
+			/*@editable*/border-top:3px solid #909090;
+		}
+	/*
+	@tab Footer
+	@section footer text
+	@tip Set the styling for your email's footer text. Choose a size and color that is easy to read.
+	@theme footer
+	*/
+		.footerContent div{
+			/*@editable*/color:#707070;
+			/*@editable*/font-family:Arial;
+			/*@editable*/font-size:11px;
+			/*@editable*/line-height:125%;
+			/*@editable*/text-align:left;
+		}
+	/*
+	@tab Footer
+	@section footer link
+	@tip Set the styling for your email's footer links. Choose a color that helps them stand out from your text.
+	*/
+		.footerContent div a:link,.footerContent div a:visited,.footerContent div a .yshortcuts{
+			/*@editable*/color:#336699;
+			/*@editable*/font-weight:normal;
+			/*@editable*/text-decoration:underline;
+		}
+		.footerContent img{
+			display:inline;
+		}
+	/*
+	@tab Footer
+	@section social bar style
+	@tip Set the background color and border for your email's footer social bar.
+	@theme footer
+	*/
+		#social{
+			/*@editable*/background-color:#FFFFFF;
+			/*@editable*/border:0;
+		}
+	/*
+	@tab Footer
+	@section social bar style
+	@tip Set the background color and border for your email's footer social bar.
+	*/
+		#social div{
+			/*@editable*/text-align:left;
+		}
+	/*
+	@tab Footer
+	@section utility bar style
+	@tip Set the background color and border for your email's footer utility bar.
+	@theme footer
+	*/
+		#utility{
+			/*@editable*/background-color:#FAFAFA;
+			/*@editable*/border-top:0;
+		}
+	/*
+	@tab Footer
+	@section utility bar style
+	@tip Set the background color and border for your email's footer utility bar.
+	*/
+		#utility div{
+			/*@editable*/text-align:left;
+		}
+		#monkeyRewards img{
+			max-width:170px !important;
+		}
+		
+.alignleft {
+	float: left;
+}
+.alignright {
+	float: right;
+}		
+
+</style></head>
+    <body leftmargin="0" marginwidth="0" topmargin="0" marginheight="0" offset="0">
+    	<center>
+        	<table border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" id="backgroundTable">
+            	<tr>
+                	<td align="center" valign="top">
+                        <!-- // Begin Template Preheader \\ -->
+                        <table border="0" cellpadding="10" cellspacing="0" width="600" id="templatePreheader">
+                            <tr>
+                                <td valign="top" class="preheaderContent">
+                                
+                                	<!-- // Begin Module: Standard Preheader \ -->
+                                    <table border="0" cellpadding="10" cellspacing="0" width="100%">
+                                    	<tr>
+                                        	<td valign="top">
+                                            	<div mc:edit="std_preheader_content">
+                                            	        <%=
+														if (lan=='es')
+															"Bolet&iacute;n Semanal de Ciberseguridad Industrial"
+														else
+															"Weekly Newsletter of Industrial Cybersecurity"
+														end
+														%>
+                                                </div>
+                                            </td>
+                                            <!-- *|IFNOT:ARCHIVE_PAGE|* -->
+											<td valign="top" width="170">
+                                            	<div mc:edit="std_preheader_links">
+                                            	
+                                            	    <%=
+													if (lan=='es')
+														"No lo ves bien?<br><a href=\"*|ARCHIVE|*\" target=\"_blank\">&Aacute;brelo en el navegador</a>."
+													else
+														"Email not displaying correctly?<br><a href=\"*|ARCHIVE|*\" target=\"_blank\">View it in your browser</a>."
+													end
+													%>
+                                                </div>
+                                            </td>
+											<!-- *|END:IF|* -->
+                                        </tr>
+                                    </table>
+                                	<!-- // End Module: Standard Preheader \ -->
+                                    
+                                </td>
+                            </tr>
+                        </table>
+                        <!-- // End Template Preheader \\ -->
+                    	<table border="0" cellpadding="0" cellspacing="0" width="600" id="templateContainer">
+                        	<tr>
+                            	<td align="center" valign="top">
+                                    <!-- // Begin Template Header \\ -->
+                                	<table border="0" cellpadding="0" cellspacing="0" width="600" id="templateHeader">
+                                        <tr>
+                                            <td class="headerContent">
+                                            
+                                                <!-- // Begin Module: Letterhead, Center Header Image \\ -->
+                                                <table border="0" cellpadding="10" cellspacing="0" width="100%">
+                                                    <tr>
+                                                    	<td class="leftHeaderContent">
+                                                            <div mc:edit="header_content_left">
+                                                            <%=
+																if (lan=='es')
+																	"Centro de Ciberseguridad Industrial"
+																else
+																	"Industrial Cybersecurity Center"
+																end
+															%>
+                                                            
+                                                            </div>
+                                                        </td>
+                                                        <td valign="middle" width="180">
+                                                            <img src="http://gallery.mailchimp.com/da04253a5fe6ba013a3652450/images/Bolet_n_Semanal_de_Ciberseguridad_Industrial1364212538.jpg" style="max-width:180px;" id="headerImage campaign-icon" mc:label="header_image" mc:edit="header_image" mc:allowtext="">
+                                                        </td>
+                                                        <td class="rightHeaderContent">
+                                                            <div mc:edit="header_content_right">
+                                                            <%=
+																if (lan=='es')
+																	"Bolet&iacute;n Semanal"
+																else
+																	"Weekly Newsletter"
+																end
+															%>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                                <!-- // End Module: Letterhead, Center Header Image \\ -->
+
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <!-- // End Template Header \\ -->
+                                </td>
+                            </tr>
+                        	<tr>
+                            	<td align="center" valign="top">
+                                    <!-- // Begin Template Body \\ -->
+                                	<table border="0" cellpadding="10" cellspacing="0" width="600" id="templateBody">
+                                    	<tr>
+                                        	<td valign="top" class="bodyContent">
+                                            
+                                                <!-- // Begin Module: Standard Content \\ -->
+                                                <table border="0" cellpadding="10" cellspacing="0" width="100%">
+                                                    <tr>
+                                                        <td valign="top">
+<div mc:edit="std_content00">
+<div "id=textbox">
+<h2 class="h2 alignleft"><%= fecha %></h2>
+<h2 class="h2 alignright">
+        <%=
+        	if (lan=='es')
+        		"N&uacute;mero #{id}"
+        	else
+        		"No. #{id}"
+        	end
+        %>
+</h2>
+</div>
+<div style="clear: both;"></div>
+<hr>
+
+<p>
+	&nbsp;</p>
+<h3 class="h3" style="line-height: 16px; margin-top: 24.578125px; margin-bottom: 12.28125px;">
+	<span style="color:#800000;">
+	        <%=
+        	if (lan=='es')
+        		"Noticias"
+        	else
+        		"News"
+        	end
+        %>
+</span></h3>
+
+<%
+	titulos=listas[0]
+	titulos.each do |n|
+		h=Digest::MD5.hexdigest(n)
+		item=items[h]
+%>
+<%=
+		htmlitem(item,lan)
+%>
+<% end %>	
+
+<hr>
+<h3 class="h3" style="line-height: 16px; margin-top: 24.578125px; margin-bottom: 12.28125px;">
+	<span style="color:#800000;">
+	        <%=
+        	if (lan=='es')
+        		"Documentos"
+        	else
+        		"Documents"
+        	end
+        %>
+	
+</span></h3>
+<br>
+
+<%
+	titulos=listas[1]
+	titulos.each do |n|
+		h=Digest::MD5.hexdigest(n)
+		item=items[h]
+%>
+<%=
+		htmlitem(item,lan)
+%>
+<% end %>	
+
+
+<hr>
+<h3 class="h3" style="line-height: 16px; margin-top: 24.578125px; margin-bottom: 12.28125px;">
+	<span style="color:#800000;">
+        <%=
+        	if (lan=='es')
+        		"Eventos"
+        	else
+        		"Events"
+        	end
+        %>	
+	
+</span></h3>
+<br>
+
+<%
+	titulos=listas[2]
+	titulos.each do |n|
+		h=Digest::MD5.hexdigest(n)
+		item=items[h]
+%>
+<%=
+		htmlitem(item,lan)
+%>
+<% end %>	
+
+<hr>
+<h3 class="h3" style="line-height: 16px; margin-top: 24.578125px; margin-bottom: 12.28125px;">
+	<span style="color:#800000;">
+        <%=
+        	if (lan=='es')
+        		"Reflexiones"
+        	else
+        		"Thoughts"
+        	end
+        %>	
+	
+</span></h3>
+<ul>
+
+<%
+	titulos=listas[3]
+	titulos.each do |n|
+		h=Digest::MD5.hexdigest(n)
+		item=items[h]
+%>
+<%=
+	if (lan=='es')
+		"<li>#{item.texto}</li>"
+	else
+		"<li>#{item.text}</li>"
+	end
+%>
+<% end %>	
+	
+
+</ul>
+<hr>
+<h3 class="h3" style="line-height: 16px; margin-top: 24.578125px; margin-bottom: 12.28125px;">
+	<span style="color: rgb(128, 0, 0);">
+        <%=
+        	if (lan=='es')
+        		"Patrocinadores"
+        	else
+        		"Sponsors"
+        	end
+        %>
+</span></h3>
+<p>
+	<img align="none" height="201" src="http://www.cci-es.org/documents/10694/0/patrocinadores/8980dcca-a856-457f-bd01-ea104c5c5053?t=1408551298426" style="width: 600px; height: 201px;" width="600"></p>
+</div>
+														</td>
+                                                    </tr>
+                                                </table>
+                                                <!-- // End Module: Standard Content \\ -->
+                                            
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <!-- // End Template Body \\ -->
+                                </td>
+                            </tr>
+                        	<tr>
+                            	<td align="center" valign="top">
+                                    <!-- // Begin Template Footer \\ -->
+                                	<table border="0" cellpadding="0" cellspacing="0" width="600" id="templateFooter">
+                                    	<tr>
+                                        	<td valign="top" class="footerContent">
+                                            
+                                                <!-- // Begin Module: Standard Footer \\ -->
+                                                <table border="0" cellpadding="10" cellspacing="0" width="100%">
+                                                    <tr>
+                                                        <td colspan="2" valign="middle" id="social">
+                                                            <div mc:edit="std_social">
+                        <%
+                        	if lan=='es'
+                        		aviso="<em>En cumplimiento del art&iacute;culo 5 de la Ley Org&aacute;nica 15/1999, de 13 de diciembre, de Protecci&oacute;n de Datos de Car&aacute;cter Personal, se informa al suscriptor del presente bolet&iacute;n de ciberseguridad industrial que sus datos de contacto ser&aacute;n incorporados a un fichero automatizado denominado &ldquo;Clientes y Proveedores&rdquo;, titularidad del Centro de Ciberseguridad Industrial, autorizando expresamente a &eacute;ste al tratamiento de dichos datos con el fin de poder gestionar el env&iacute;o peri&oacute;dico del mencionado bolet&iacute;n. El titular de los datos puede ejercitar gratuitamente los derechos de acceso, rectificaci&oacute;n, cancelaci&oacute;n y oposici&oacute;n previstos en la Ley 15/1999, dirigi&eacute;ndose por cualquier medio de comunicaci&oacute;n escrita que permita acreditar la identidad del interesado a&nbsp;</em><em>Centro de Ciberseguridad Industrial</em><em>, c/Maiquez 18, 28009 Madrid.</em><br>"
+                        	else
+                        		aviso="<em>In compliance with Organic Law 15/1999, on Protection of Data of a Personal Nature (hereinafter referred to as LOPD), you, as a subscriber of this newsletter, are informed that your data will be included in a file titled \"Clientes y Proveedores\" owned by the Centro de Ciberseguridad Industrial (hereinfater referred to as CCI) and that you allow the processing of data in order to send you periodically by e-mail the aforementioned newsletter. In accordance with the LOPD you will be entitled to execute your right of access, rectification, cancellation and objection to such data, at Centro de Ciberseguridad Industrial, c/Maiquez 18, 28009, Madrid attaching a photocopy of your National Identity Card or appropriate identification document.</em><br>"
+                        	end
+                        %>
+                        
+                        <%=
+                        	aviso
+                        %>
+</div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td valign="top" width="350">
+                                                            <div mc:edit="std_footer">
+																<em>Copyright &copy; *|CURRENT_YEAR|* *|LIST:COMPANY|*, All rights reserved.</em>
+																<br>
+																*|IFNOT:ARCHIVE_PAGE|* *|LIST:DESCRIPTION|*
+																<br>
+																<strong>
+												        <%=
+															if (lan=='es')
+																"Nuestra direcci&oacute;n postal es:"
+															else
+																"Our mailing address is:"
+															end
+														%>
+
+																</strong>
+																<br>
+																*|LIST_ADDRESS|**|END:IF|* 
+                                                            </div>
+                                                        </td>
+                                                        <td valign="top" width="190" id="monkeyRewards">
+                                                            <div mc:edit="monkeyrewards">
+                                                                *|IF:REWARDS|* *|HTML:REWARDS|* *|END:IF|*
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="2" valign="middle" id="utility">
+                                                            <div mc:edit="std_utility">
+                                                                &nbsp;<a href="*|UNSUB|*">
+												        <%=
+															if (lan=='es')
+																"Darse de baja de la lista"
+															else
+																"Unsubscribe from this list"
+															end
+														%>                                                                
+                                                        </a> | <a href="*|UPDATE_PROFILE|*">
+                           								<%=
+															if (lan=='es')
+																"Actualizar preferencias de suscripci&oacute;n"
+															else
+																"Update subscription preferences"
+															end
+														%>
+                                                        </a>&nbsp;
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </table>                                    
+
+                                                <!-- // End Module: Standard Footer \\ -->
+                                            
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <!-- // End Template Footer \\ -->
+                                </td>
+                            </tr>
+                        </table>
+                        <br>
+                    </td>
+                </tr>
+            </table>
+        </center>
+    </body>
+</html>

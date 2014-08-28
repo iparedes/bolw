@@ -1,0 +1,155 @@
+
+#erro{
+	width: 100%;
+	background-color: red;
+	color: white;
+	text-align: center;
+}
+
+
+
+* {
+    margin: 3;
+    padding: 3;    
+}
+.label {
+    width: 60px;
+    display: inline-block;
+}
+
+
+.indice{
+	font-family: tahoma;
+	font-size: 200%;
+}
+
+
+input[type="text"] {
+	width: 100%;
+	margin: 1 1 1 1;
+}
+
+textarea{
+	width: 100%;
+	margin: 1 1 1 1;
+}
+
+#outer{
+	width:100%;
+
+	color: #000000;
+}
+
+#outer2{
+	width:300px;
+	min-height:100%;
+
+	color: #000000;
+}
+
+#outer3{
+	width:800px;
+	min-height:100%;
+
+	color: #000000;
+}
+
+#labels{
+	width: 39%
+	text-align: right;
+	line-height: 25px;
+	float: left
+}
+
+#fields{
+	width: 59%
+	text-align: right;
+	line-height: 25px;
+	float: left
+}
+
+#item{
+	width: 60%;
+	overflow: hidden;
+    float: left;
+}
+
+#item1{
+	float: left;
+	width: 49%;
+}	
+
+#item2{
+	float: right;
+	width: 48%;
+}	
+
+#lists{
+	float: right;
+	height:100%;
+ 	width: 38%;
+}
+
+#tools{
+	width: 99%;
+	clear: both;
+}
+
+#seccion{
+	width: 99%;
+}
+
+#texto{
+	width: 90%;
+	float: left;
+}
+
+#botones{
+	width: 5%;
+	float: left;
+}
+
+#flecha{
+	width: 2em;
+}
+
+#docs1{
+    border-style: groove;
+    border-width: 5px;
+	float: left;
+	width: 45%;
+}	
+
+#docs2{
+    border-style: groove;
+    border-width: 5px;
+	float: right;
+	width: 45%;
+}	
+
+#copiar1{
+    border-style: groove;
+    border-width: 5px;
+	float: left;
+	width: 40%;
+}	
+
+#copiar2{
+	width: 5%;
+	vertical-align: middle;
+    text-align: center;
+	min-height:100%;
+	float: left;
+}
+
+#copiar3{
+    border-style: groove;
+    border-width: 5px;
+	float: left;
+	width: 15%;
+}
+
+
+
+
+

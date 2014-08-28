@@ -1,0 +1,31 @@
+<link rel="stylesheet" type="text/css" href="bolw.css" media="all">
+
+<body>
+
+<form action="/cargaboletin" method="post">
+
+
+	<fieldset>
+	<legend>Boletines</legend>
+	<select name="boletin" size="10" style="width: 99%;">
+
+	<% 
+		filenames=Dir[settings.DirXML+"*.xml"]
+		filenames.sort_by! { |x| -(x[/\d+/].to_i) }
+		filenames.each do |f|
+			if f=~ /.*boletin(\d+)\.xml/
+				nombre="boletin"+$1
+			else
+				next
+			end
+			
+	%>
+			<option> 
+	<%= nombre %> <%end %>
+
+	<input type="submit" name="action" value="OK">
+    </fieldset>
+    
+</form>
+
+</body>
