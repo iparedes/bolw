@@ -5,10 +5,11 @@ require 'digest/md5'
 require 'zip'
 require 'fileutils'
 
-
-
 require_relative 'item'
 
+use Rack::Auth::Basic, "Restricted Area" do |username, password|
+  username == 'nacho' and password == 'RuudRub10'
+end
 
 set :bind, '0.0.0.0'
 set :items, Hash.new
