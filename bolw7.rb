@@ -2,16 +2,30 @@ require 'sinatra'
 require 'nokogiri'
 require 'pry'
 require 'digest/md5'
-require 'zip'
 require 'fileutils'
 
 require_relative 'item'
 
 use Rack::Auth::Basic, "Restricted Area" do |username, password|
-  username == 'nacho' and password == 'RuudRub10'
+	F='creds'
+
+	if File.exist?(F)
+		creds={}
+		File.open('./creds') do |fp|
+			fp.each do |line|
+				nombre,pass = line.chomp.split(":")
+				creds[nombre]=pass
+			end
+		end
+
+		creds[username]==password
+	else
+		abort("Falta el archivo de credenciales")
+	end
 end
 
 set :bind, '0.0.0.0'
+set :port, 1212
 set :items, Hash.new
 set :currentitem, nil
 set :docen, ''
@@ -524,7 +538,7 @@ post '/copiar' do
 	settings.boletin=params[:boletin]
 	
 	if (settings.boletin.nil?)
-		settings.erro="Debes seleccionar un boletín de destino"
+		settings.erro="Debes seleccionar un boletin de destino"
 		redirect '/copiar'
 	end
 	
