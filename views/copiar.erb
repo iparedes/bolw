@@ -25,9 +25,9 @@
 						<% 
 							t=''
 							if settings.notsel.nil?
-								settings.noticias.map{ |n| t=t+"<option>"+n+"</option>\n" }
+								settings.noticias.map{ |n| t=t+"<option>"+CGI::escapeHTML(n)+"</option>\n" }
 							else
-								settings.noticias.map{ |n| settings.noticias[settings.notsel]==n ? t=t+"<option selected>"+n+"</option>\n" : t=t+"<option>"+n+"</option>\n" }
+								settings.noticias.map{ |n| settings.noticias[settings.notsel]==n ? t=t+"<option selected>"+CGI::escapeHTML(n)+"</option>\n" : t=t+"<option>"+CGI::escapeHTML(n)+"</option>\n" }
 							end%> 
 						<%= t %>
 						
@@ -44,9 +44,9 @@
 						<% 
 							t=''
 							if settings.docsel.nil?
-								settings.documentos.map{ |n| t=t+"<option>"+n+"</option>\n" }
+								settings.documentos.map{ |n| t=t+"<option>"+CGI::escapeHTML(n)+"</option>\n" }
 							else
-								settings.documentos.map{ |n| settings.documentos[settings.docsel]==n ? t=t+"<option selected>"+n+"</option>\n" : t=t+"<option>"+n+"</option>\n" }
+								settings.documentos.map{ |n| settings.documentos[settings.docsel]==n ? t=t+"<option selected>"+CGI::escapeHTML(n)+"</option>\n" : t=t+"<option>"+CGI::escapeHTML(n)+"</option>\n" }
 							end%> 
 						<%= t %>
 
@@ -61,9 +61,9 @@
 						<% 
 							t=''
 							if settings.evesel.nil?
-								settings.eventos.map{ |n| t=t+"<option>"+n+"</option>\n" }
+								settings.eventos.map{ |n| t=t+"<option>"+CGI::escapeHTML(n)+"</option>\n" }
 							else
-								settings.eventos.map{ |n| settings.eventos[settings.evesel]==n ? t=t+"<option selected>"+n+"</option>\n" : t=t+"<option>"+n+"</option>\n" }
+								settings.eventos.map{ |n| settings.eventos[settings.evesel]==n ? t=t+"<option selected>"+CGI::escapeHTML(n)+"</option>\n" : t=t+"<option>"+CGI::escapeHTML(n)+"</option>\n" }
 							end%> 
 						<%= t %>				
 						</select><br>
@@ -77,9 +77,9 @@
 						<% 
 							t=''
 							if settings.refsel.nil?
-								settings.reflexiones.map{ |n| t=t+"<option>"+n+"</option>\n" }
+								settings.reflexiones.map{ |n| t=t+"<option>"+CGI::escapeHTML(n)+"</option>\n" }
 							else
-								settings.reflexiones.map{ |n| settings.reflexiones[settings.refsel]==n ? t=t+"<option selected>"+n+"</option>\n" : t=t+"<option>"+n+"</option>\n" }
+								settings.reflexiones.map{ |n| settings.reflexiones[settings.refsel]==n ? t=t+"<option selected>"+CGI::escapeHTML(n)+"</option>\n" : t=t+"<option>"+CGI::escapeHTML(n)+"</option>\n" }
 							end%> 
 						<%= t %>				
 

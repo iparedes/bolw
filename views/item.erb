@@ -37,19 +37,19 @@ function addtag(val)
 			<label>T&iacute;tulo</label><br>
 			<input type="text" name="titulo" value="<%=
 			if settings.currentitem 
-				"#{settings.currentitem.titulo}"
+				CGI::escapeHTML(settings.currentitem.titulo)
 			end
 			%>"><br>
 			<label>Texto</label><br>
 			<textarea name="texto" rows="15"><%=
 			if settings.currentitem 
-				"#{settings.currentitem.texto}"
+				CGI::escapeHTML(settings.currentitem.texto)
 			end
 			%></textarea><br>
 			<label>Enlace</label><br>
 			<input type="text" name="enlace" value="<%=
 			if settings.currentitem 
-				"#{settings.currentitem.enlace}"
+				CGI::escapeHTML(settings.currentitem.enlace)
 			end
 			%>">
 		
@@ -62,19 +62,19 @@ function addtag(val)
 			<label>Title</label><br>
 			<input type="text" name="title" value="<%=
 			if settings.currentitem 
-				"#{settings.currentitem.title}"
+				CGI::escapeHTML(settings.currentitem.title)
 			end
 			%>"><br>
 			<label>Text</label><br>
 			<textarea name="text" rows="15"><%=
 			if settings.currentitem
-				"#{settings.currentitem.text}"
+				CGI::escapeHTML(settings.currentitem.text)
 			end
 			%></textarea><br>
 			<label>Link</label><br>
 			<input type="text" name="link" value="<%=
 			if settings.currentitem 
-				"#{settings.currentitem.link}"
+				CGI::escapeHTML(settings.currentitem.link)
 			end
 			%>">
 		</fieldset>
@@ -217,9 +217,9 @@ function addtag(val)
 						<% 
 							t=''
 							if settings.notsel.nil?
-								settings.noticias.map{ |n| t=t+"<option>"+n+"</option>\n" }
+								settings.noticias.map{ |n| t=t+"<option>"+CGI::escapeHTML(n)+"</option>\n" }
 							else
-								settings.noticias.map{ |n| settings.noticias[settings.notsel]==n ? t=t+"<option selected>"+n+"</option>\n" : t=t+"<option>"+n+"</option>\n" }
+								settings.noticias.map{ |n| settings.noticias[settings.notsel]==n ? t=t+"<option selected>"+CGI::escapeHTML(n)+"</option>\n" : t=t+"<option>"+CGI::escapeHTML(n)+"</option>\n" }
 							end%> 
 						<%= t %>
 						
@@ -239,9 +239,9 @@ function addtag(val)
 						<% 
 							t=''
 							if settings.docsel.nil?
-								settings.documentos.map{ |n| t=t+"<option>"+n+"</option>\n" }
+								settings.documentos.map{ |n| t=t+"<option>"+CGI::escapeHTML(n)+"</option>\n" }
 							else
-								settings.documentos.map{ |n| settings.documentos[settings.docsel]==n ? t=t+"<option selected>"+n+"</option>\n" : t=t+"<option>"+n+"</option>\n" }
+								settings.documentos.map{ |n| settings.documentos[settings.docsel]==n ? t=t+"<option selected>"+CGI::escapeHTML(n)+"</option>\n" : t=t+"<option>"+CGI::escapeHTML(n)+"</option>\n" }
 							end%> 
 						<%= t %>
 
@@ -260,9 +260,9 @@ function addtag(val)
 						<% 
 							t=''
 							if settings.evesel.nil?
-								settings.eventos.map{ |n| t=t+"<option>"+n+"</option>\n" }
+								settings.eventos.map{ |n| t=t+"<option>"+CGI::escapeHTML(n)+"</option>\n" }
 							else
-								settings.eventos.map{ |n| settings.eventos[settings.evesel]==n ? t=t+"<option selected>"+n+"</option>\n" : t=t+"<option>"+n+"</option>\n" }
+								settings.eventos.map{ |n| settings.eventos[settings.evesel]==n ? t=t+"<option selected>"+CGI::escapeHTML(n)+"</option>\n" : t=t+"<option>"+CGI::escapeHTML(n)+"</option>\n" }
 							end%> 
 						<%= t %>				
 						</select><br>
@@ -280,9 +280,9 @@ function addtag(val)
 						<% 
 							t=''
 							if settings.refsel.nil?
-								settings.reflexiones.map{ |n| t=t+"<option>"+n+"</option>\n" }
+								settings.reflexiones.map{ |n| t=t+"<option>"+CGI::escapeHTML(n)+"</option>\n" }
 							else
-								settings.reflexiones.map{ |n| settings.reflexiones[settings.refsel]==n ? t=t+"<option selected>"+n+"</option>\n" : t=t+"<option>"+n+"</option>\n" }
+								settings.reflexiones.map{ |n| settings.reflexiones[settings.refsel]==n ? t=t+"<option selected>"+CGI::escapeHTML(n)+"</option>\n" : t=t+"<option>"+CGI::escapeHTML(n)+"</option>\n" }
 							end%> 
 						<%= t %>				
 

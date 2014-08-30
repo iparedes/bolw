@@ -559,6 +559,7 @@ post '/copiar' do
 	when 'Copiar'
 		
 	listas=[params[:noticias],params[:documentos],params[:eventos],params[:reflexiones]]
+
 		listas.each do |t|
 			if !t.nil?
 				t.each do |e|
