@@ -573,6 +573,48 @@ post '/copiar' do
 	redirect '/item'
 end
 
+get '/upload' do
+	erb :upload
+end
+
+post '/upload' do
+	fname=params[:myfile]
+
+	if fname.length!=2
+		settings.erro=("Debes seleccionar dos archivos")
+		redirect '/upload'
+	end
+	f1=fname[0][:filename]
+	f2=fname[1][:filename]
+	f1 =~ /.+(\d+).+/
+	n1=$1
+
+	f2 =~ /.+(\d+).+/
+	n2=$1
+	if (n1!=n2)
+		settings.erro=("Los XML deben pertenecer al mismo n&uacute;mero de bolet&iacute;n")
+		redirect '/upload'
+	end	
+	xsd=Nokogiri::XML::Schema(File.read("./boletin.xsd"))
+
+	
+	fname.each do |fn|
+		doc=Nokogiri::XML(File.read('./public/xml/'+fn[:filename]))
+		a=xsd.validate(doc)
+		if !a.empty?
+			binding.pry
+			t="#{fn[:filename]} Linea #{a[0].line}: #{a[0].message}"
+			settings.erro=t
+			redirect '/upload'
+		end
+
+		File.open('./public/xml/'+fn[:filename],"w") do |f|
+			f.write(fn[:tempfile].read)
+		end
+	end
+	redirect '/'
+end
+
 get '/download/:filename' do |filename|
   send_file "./public/html/#{filename}", :filename => filename, :type => 'Application/octet-stream'
 end

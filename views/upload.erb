@@ -1,0 +1,18 @@
+<link rel="stylesheet" type="text/css" href="bolw.css" media="all">
+
+<body>
+<%=
+	if !settings.erro.empty?
+		proverr=settings.erro
+		settings.erro=''
+		"<div id=\"erro\">#{proverr}</div>"
+	end
+%>
+Selecciona los dos XML de un bolet&iacute;n (espa&ntilde;ol e ingl&eacute;s).
+<form action="/upload" method="post" enctype='multipart/form-data'>
+    <input type='file' name='myfile[]' multiple>
+    <br>
+    <input type='submit' value='Upload'>
+</form>
+
+</body>
