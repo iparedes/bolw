@@ -1,4 +1,5 @@
 require 'sinatra'
+require 'cgi'
 require 'nokogiri'
 require 'pry'
 require 'digest/md5'
@@ -509,6 +510,12 @@ post '/item' do
 end
 
 get '/nuevoboletin' do
+	settings.noticias=Array.new
+	settings.documentos=Array.new
+	settings.eventos=Array.new
+	settings.reflexiones=Array.new
+	settings.items=nil
+	settings.items={}
 	erb :nuevoboletin
 end
 
@@ -616,6 +623,13 @@ post '/upload' do
 end
 
 get '/download/:filename' do |filename|
-  send_file "./public/html/#{filename}", :filename => filename, :type => 'Application/octet-stream'
+	filename =~ /\.(.+)$/
+	path='./public/'
+	if ($1=="xml")
+		path+="xml/"
+	else
+		path+="html/"
+	end
+  	send_file path+"#{filename}", :filename => filename, :type => 'Application/octet-stream'
 end
 
