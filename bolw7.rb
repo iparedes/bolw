@@ -602,22 +602,25 @@ post '/upload' do
 		settings.erro=("Los XML deben pertenecer al mismo n&uacute;mero de bolet&iacute;n")
 		redirect '/upload'
 	end	
-	xsd=Nokogiri::XML::Schema(File.read("./boletin.xsd"))
 
-	
+
+	xsd=Nokogiri::XML::Schema(File.read("./boletin.xsd"))
 	fname.each do |fn|
+		
+		File.open('./public/xml/'+fn[:filename],"w") do |f|
+			f.write(fn[:tempfile].read)
+		end
+	
 		doc=Nokogiri::XML(File.read('./public/xml/'+fn[:filename]))
+		#binding.pry
+		#doc=Nokogiri::XML(fn[:tempfile].read)
 		a=xsd.validate(doc)
 		if !a.empty?
-			binding.pry
 			t="#{fn[:filename]} Linea #{a[0].line}: #{a[0].message}"
 			settings.erro=t
 			redirect '/upload'
 		end
 
-		File.open('./public/xml/'+fn[:filename],"w") do |f|
-			f.write(fn[:tempfile].read)
-		end
 	end
 	redirect '/'
 end
