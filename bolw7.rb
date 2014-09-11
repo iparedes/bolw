@@ -54,6 +54,7 @@ Meses=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septie
 Months=['January','February','March','April','May','June','July','August','September','October','November','December']
 
 def genXML(fname,idioma)
+		FileUtils.cp(fname,settings.DirXML+'bkp/')
 		f=File.open(fname,'w')
 		if idioma=='en'
 			f.write("#{builder :xml, :locals => {:items => settings.items, :id => settings.idboletin, :fecha => settings.fechaen, :listas => [settings.noticias,settings.documentos,settings.eventos,settings.reflexiones] , :lan =>'en'}}")
@@ -190,6 +191,11 @@ def titulo_repetido(title)
 end
 
 get '/' do
+	settings.noticias=Array.new
+	settings.documentos=Array.new
+	settings.eventos=Array.new
+	settings.reflexiones=Array.new
+	settings.currentitem=nil
 	erb :index
 end
 
@@ -235,6 +241,9 @@ post '/item' do
 			if enlace.empty?
 				enlace=link
 			end
+		else # Es reflexion
+			titulo="Reflexion #{settings.reflexiones.length+1}"
+			title=titulo
 		end
 
 		if settings.cargado
