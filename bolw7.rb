@@ -54,7 +54,9 @@ Meses=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septie
 Months=['January','February','March','April','May','June','July','August','September','October','November','December']
 
 def genXML(fname,idioma)
-		FileUtils.cp(fname,settings.DirXML+'bkp/')
+		if File.file?(fname)
+			FileUtils.cp(fname,settings.DirXML+'bkp/')
+		end
 		f=File.open(fname,'w')
 		if idioma=='en'
 			f.write("#{builder :xml, :locals => {:items => settings.items, :id => settings.idboletin, :fecha => settings.fechaen, :listas => [settings.noticias,settings.documentos,settings.eventos,settings.reflexiones] , :lan =>'en'}}")
@@ -407,10 +409,10 @@ post '/item' do
 		
 	when 'Terminar'
 
-		#fname=settings.DirXML+"#{settings.boletin}-en.xml"
-		#genXML(fname,'en')	
-		#fname=settings.DirXML+"#{settings.boletin}.xml"
-		#genXML(fname,'es')
+		fname=settings.DirXML+"#{settings.boletin}-en.xml"
+		genXML(fname,'en')	
+		fname=settings.DirXML+"#{settings.boletin}.xml"
+		genXML(fname,'es')
 		
 		settings.fechaen =~ /(\w+) (\d+)\, (\d+)/
 		
